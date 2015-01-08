@@ -1,0 +1,420 @@
+/**
+ * Ahungry Tactics - Free as in Freedom multiplayer tactics/TCG game
+ * Copyright (C) 2013 Matthew Carter
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.box-shadow(@x: 3px, @y: 3px, @w: 6px, @c: #000) {
+    box-shadow:@x @y @w @c;
+}
+
+.corner(@r: 3px 3px 3px 3px) {
+    -webkit-border-radius:@r;
+    -moz-border-radius:@r;
+    border-radius:@r;
+}
+
+.gradient(@start_color, @end_color) {
+    background: @end_color; /* Old browsers */
+    background: -moz-linear-gradient(top, @start_color 0%, @end_color 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@start_color), color-stop(100%,@end_color)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, @start_color 0%, @end_color 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, @start_color 0%, @end_color 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, @start_color 0%, @end_color 100%); /* IE10+ */
+    background: linear-gradient(to bottom, @start_color 0%, @end_color 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=@start_color, endColorstr=@end_color,GradientType=0 ); /* IE6-8 */
+}
+
+html, body {
+    background:#000;
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+}
+
+body {
+    color:#D0EE4C;
+}
+
+a, a:visited, a:hover {
+    color:#fff;
+}
+
+#wrap {
+    padding-right:200px;
+}
+
+#content {
+    padding:10px;
+}
+
+.unit_edit {
+    background:#666;
+    display:inline-block;
+    padding:10px;
+    text-align:right;
+    width:250px;
+}
+
+.unit_img {
+}
+
+#possible_jobs {
+    display:inline-block;
+}
+
+.job {
+    display:inline-block;
+    opacity:.5;
+    text-align:center;
+    width:90px !important;
+}
+
+.job .spoiler {
+    background:#fff;
+    border-radius:50px;
+    bottom:0;
+    color:#000;
+    display:none;
+    left:0;
+    padding:30px;
+    position:fixed;
+    z-index:9;
+}
+
+.job .spoiler label {
+    font-size:.8em;
+    padding:4px;
+}
+
+.job:hover {
+    opacity:1;
+}
+
+.job:hover .spoiler {
+    display:block;
+}
+
+.eligible {
+    opacity:1;
+}
+
+.job .unit_img {
+    display:inline-block;
+    height:100px;
+}
+
+.unit_edit .unit_img {
+    float:left;
+    width:150px;
+}
+
+.unit_edit label {
+    display:inline-block;
+    font-size:.8em;
+    text-align:right;
+}
+
+#hud {
+    background:rgba(0,0,0,.9);
+    height:100%;
+    font-size:12px;
+    padding:0;
+    position:fixed;
+    right:0;
+    width:28%;
+    z-index:999;
+    .more {
+	background:#333;
+	box-shadow:inset 0px 0px 9px #000;
+    }
+}
+
+#hud a {
+    color:#D0EE4C;
+    display:block;
+    margin-right:4px;
+    padding:4px;
+    text-align:center;
+    text-decoration:none;
+    &:hover {
+	background:#D0EE4C;
+	color:#000;
+    }
+}
+
+#chat-log, #event-log {
+    background:#000;
+    border:3px solid #fff;
+    .box-shadow;
+    color:#fff;
+    display:block;
+    height:90px;
+    overflow-y:scroll;
+}
+
+#unit-hud {
+    display:block;
+}
+
+#unit-hud .unit-stats {
+    padding-top:10px;
+}
+
+#unit-hud label {
+    display:inline-block;
+    padding:4px;
+    width:90px;
+}
+
+#unit-hud label b {
+    float:right;
+}
+
+#unit-hud .unit-icon {
+    float:right;
+    height:100px;
+    margin-top:-20px;
+}
+
+#home-page-units {
+    float:right;
+    margin-right:80px;
+}
+
+#home-page-units img {
+    margin:-60px;
+    height:80px;
+}
+
+.more {
+    display:none;
+}
+
+#loading {
+    background:#000;
+    display:none;
+    height:100%;
+    left:0;
+    padding:30%;
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1001;
+}
+#help-text {
+    float:right;
+}
+#hand-holder {
+    font-size:10px;
+    .gradient(#000, #444);
+    .box-shadow;
+    .corner;
+    border:3px solid #000;
+    color:#fff;
+    padding:4px;
+    text-align:center;
+    position:absolute;
+    bottom:170px;
+    left:0px;
+    z-index:9;
+    width:320px;
+}
+#hand {
+    .card {
+	float:right;
+	margin:2px;
+	height:auto;
+	width:70px;
+    }
+}	
+#big-card {
+    border:6px solid #000;
+    .corner(6px);
+    bottom:0px;
+    display:none;
+    position:fixed;
+    right:0px;
+    width:300px;
+    z-index:12;
+}
+#active-card {
+    .gradient(#000, #333);
+    .corner;
+    color:#fff;
+    position:absolute;
+    bottom:2px;
+    left:515px;
+    height:170px;
+    padding:9px;
+    text-align:center;
+    width:130px;
+    z-index:9;
+    font-size:10px;
+}
+#chat-box {
+    background:rgba(0,0,0,.9);
+    border-radius:6px;
+    display:none;
+    left:40%;
+    top:40%;
+    padding:20px;
+    position:absolute;
+    width:200px;
+    z-index:19;
+    #chatter {
+	border-radius:10px;
+	border:0;
+	background:rgba(255,255,255,.9);
+	padding:10px;
+    }
+}
+#main-menu {
+    font-family:monospace;
+    .gradient(#444,#000);
+    .box-shadow;
+    .corner;
+    color:#fff;
+    font-size:12px;
+    padding:0px;
+    position:absolute;
+    bottom:0%;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index:11;
+    .inactive {
+	display:none;
+    }
+    .mm-toggle {
+	padding:10px;
+	.active {
+	    display:block;
+	}
+    }
+    #unit-info {
+	.unit-portrait {
+	    float:left;
+	    width:200px;
+	}
+	.unit-stat {
+	    color:#fff;
+	    .gradient(#333,#000);
+	    .corner;
+	    display:inline-block;
+	    font-weight:bold;
+	    padding:3px;
+	    margin:2px;
+	}
+	padding:8px;
+    }
+    #deck-info {
+	.card {
+	    height:60px;
+	    width:45px;
+	    display:inline-block;
+	    margin:0;
+	}
+    }
+    #job-area {
+	img {
+	    width:90px;
+	}
+    }
+    .active {
+	/*.gradient(#777, #444);*/
+    }
+    #main-menu-menu {
+	.active {
+	    background:#777;
+	}
+	#hide-mm {
+	    background:transparent;
+	    color:#000;
+	    float:right;
+	    font-size:90px;
+	    font-weight:bold;
+	    margin:0;
+	    margin-top:-60px;
+	}
+	a {
+	    background:#333;
+	    display:inline-block;
+	    margin:2px;
+	    text-decoration:none;
+	    padding:13px;
+	}
+    }
+}
+#player-list {
+    z-index:13;
+    .gradient(#777,#444);
+    color:#fff;
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+    padding:4px;
+    border-radius:3px;
+    text-align:right;
+    .card {
+	height:270px;
+	width:180px;
+    }
+    .player {
+	.gradient(#333,#000);
+	display:inline-block;
+	padding:4px;
+	font-size:12px;
+	text-decoration:none;
+	&:hover {
+	    background:#fff;
+	    color:#000;
+	}
+	img {
+	    float:left;
+	    height:30px;
+	}
+    }
+}
+
+#dialog-area {
+    position:fixed;
+    bottom:0;
+    right:0;
+    width:100%;
+    z-index:10;
+    img {
+	width:300px;
+	float:left;
+    }
+    #dialog {
+	background:rgba(255,255,255,.9);
+	border:4px solid #000;
+	border-radius:20px;
+	color:#000;
+	float:left;
+	font-size:20px;
+	margin-left:-100px;
+	padding:20px;
+	width:600px;
+	a {
+	    color:maroon;
+	    padding:30px;
+	}
+    }
+}
+    

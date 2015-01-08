@@ -1,0 +1,8 @@
+*.swp
+db_connection.inc.php
+nohup.out
+node_modules/
+third_party/
+uploads/
+animated/
+web/js/tacticsrc.js

@@ -1,0 +1,70 @@
+/**
+ * Ahungry Tactics - Free as in Freedom multiplayer tactics/TCG game
+ * Copyright (C) 2013 Matthew Carter
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+html,
+body {
+  background: #ffffff;
+  color: #666666;
+  font-family: monospace;
+  font-size: 1.3em;
+  margin: 0;
+  padding: 0;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+html ul li,
+body ul li {
+  clear: both;
+  margin: 6%;
+}
+html h1,
+body h1 {
+  font-family: serif;
+}
+html #blurb,
+body #blurb {
+  float: left;
+  margin-right: 4%;
+  width: 46%;
+}
+html #home-images,
+body #home-images {
+  float: right;
+  text-align: center;
+  padding: 2%;
+  width: 46%;
+}
+html #home-images .card,
+body #home-images .card {
+  border-radius: 4px;
+  border: 7px solid #000;
+}
+html #home-images #units img,
+body #home-images #units img {
+  display: inline-block;
+  width: 10%;
+}
+@media (min-width: 1px) and (max-width: 500px) {
+  html #blurb,
+  body #blurb {
+    float: none;
+  }
+  html #home-images,
+  body #home-images {
+    float: none;
+  }
+}

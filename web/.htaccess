@@ -1,0 +1,13 @@
+RewriteEngine On
+
+#used to send www to non-www domain
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/ [R=301,L]
+
+#used for cms system stuff
+RewriteCond %{REQUEST_URI} ^/system.*
+RewriteRule ^(.*)$ index.php?/$1 [L] 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteRule ^(.+)$ index.php?/$1 [L] 
+DirectoryIndex index.php
